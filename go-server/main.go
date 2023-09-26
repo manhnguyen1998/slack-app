@@ -20,45 +20,45 @@ import (
 type SlackServer struct{}
 
 func (s *SlackServer) PostMessage(
-    ctx context.Context,
-    req *connect.Request[slackv1.PostMessageRequest],
+	ctx context.Context,
+	req *connect.Request[slackv1.PostMessageRequest],
 ) (*connect.Response[slackv1.PostMessageResponse], error) {
-    log.Println("Request headers: ", req.Header())
+	log.Println("Request headers: ", req.Header())
 
-    // Call Slack api
-    api := slack.New(os.Getenv("TOKEN"))
+	// Call Slack api
+	api := slack.New(os.Getenv("TOKEN"))
 
-    res1, res2, err := api.PostMessage("CLMTRTE2C", slack.MsgOptionText(req.Msg.Message, false))
+	res1, res2, err := api.PostMessage("CLMTRTE2C", slack.MsgOptionText(req.Msg.Message, false))
 	if err != nil {
 		fmt.Printf("%s\n", err)
 		res := connect.NewResponse(&slackv1.PostMessageResponse{
-            Response: fmt.Sprintf("Error on calling slack api, %s!", err),
-        })
+			Response: fmt.Sprintf("Error on calling slack api, %s!", err),
+		})
 
-        return res, nil
+		return res, nil
 	}
 
-    fmt.Printf("ID: %s, Fullname: %s", res1, res2)
+	fmt.Printf("ID: %s, Fullname: %s", res1, res2)
 
-    // response to rpc caller
-    res := connect.NewResponse(&slackv1.PostMessageResponse{
-        Response: fmt.Sprintf("Sending message successfully, %s!", req.Msg.Message),
-    })
-    res.Header().Set("Slack-Version", "v1")
-    return res, nil
+	// response to rpc caller
+	res := connect.NewResponse(&slackv1.PostMessageResponse{
+		Response: fmt.Sprintf("Sending message successfully, %s!", req.Msg.Message),
+	})
+	res.Header().Set("Slack-Version", "v1")
+	return res, nil
 }
 
 func main() {
-    slack_server := &SlackServer{}
-    mux := http.NewServeMux()
-    path, handler := slackv1connect.NewSlackServiceHandler(slack_server)
-    mux.Handle(path, handler)
-    err := http.ListenAndServe(
-        "localhost:8080",
-        // Use h2c so we can serve HTTP/2 without TLS.
-        h2c.NewHandler(mux, &http2.Server{}),
-    )
-    if err != nil {
-        fmt.Println("Server error", err)
-    }
+	slack_server := &SlackServer{}
+	mux := http.NewServeMux()
+	path, handler := slackv1connect.NewSlackServiceHandler(slack_server)
+	mux.Handle(path, handler)
+	err := http.ListenAndServe(
+		"localhost:8080",
+		// Use h2c so we can serve HTTP/2 without TLS.
+		h2c.NewHandler(mux, &http2.Server{}),
+	)
+	if err != nil {
+		fmt.Println("Server error", err)
+	}
 }
