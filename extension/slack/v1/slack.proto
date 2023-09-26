@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package slack.v1;
+
+message PostMessageRequest {
+  string message = 1;
+}
+
+message PostMessageResponse {
+  string response = 1;
+}
+
+service SlackService {
+  rpc PostMessage(PostMessageRequest) returns (PostMessageResponse) {}
+}
