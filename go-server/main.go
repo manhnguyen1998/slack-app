@@ -53,9 +53,12 @@ func main() {
     mux := http.NewServeMux()
     path, handler := slackv1connect.NewSlackServiceHandler(slack_server)
     mux.Handle(path, handler)
-    http.ListenAndServe(
+    err := http.ListenAndServe(
         "localhost:8080",
         // Use h2c so we can serve HTTP/2 without TLS.
         h2c.NewHandler(mux, &http2.Server{}),
     )
+    if err != nil {
+        fmt.Println("Server error", err)
+    }
 }
