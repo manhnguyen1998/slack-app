@@ -27,12 +27,11 @@ go run main.go
 ```
 - Test server
 ```bash
-evans --path ./ --proto greet/v1/greet.proto -p 8080
-call Greet
-
--> name (TYPE_STRING) => node
+evans --path ./ --proto slack/v1/slack.proto -p 8080
+slack.v1.SlackService@127.0.0.1:8080> call PostMessage
+message (TYPE_STRING) => manh
 {
-  "greeting": "Hello, node!"
+  "response": "Hello, manh!"
 }
 ```
 
@@ -41,5 +40,5 @@ call Greet
 cd extension
 npx tsx client.ts
 
--> GreetResponse { greeting: 'Hello, Jane!' }
+-> PostMessageResponse { response: 'Sending message successfully, Jane!' }
 ```
