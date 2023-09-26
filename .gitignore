@@ -24,3 +24,5 @@ go.work
 .envrc
 
 extension/node_modules
+
+tmp
