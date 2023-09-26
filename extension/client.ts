@@ -1,5 +1,5 @@
 import { createPromiseClient } from "@connectrpc/connect";
-import { GreetService } from "./gen/greet/v1/greet_connect";
+import { SlackService } from "./gen/slack/v1/slack_connect";
 import { createConnectTransport } from "@connectrpc/connect-node";
 
 const transport = createConnectTransport({
@@ -8,8 +8,8 @@ const transport = createConnectTransport({
 });
 
 async function main() {
-  const client = createPromiseClient(GreetService, transport);
-  const res = await client.greet({ name: "Jane" });
+  const client = createPromiseClient(SlackService, transport);
+  const res = await client.postMessage({ message: "Jane" });
   console.log(res);
 }
 void main();
