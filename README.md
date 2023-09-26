@@ -42,3 +42,10 @@ npx tsx client.ts
 
 -> PostMessageResponse { response: 'Sending message successfully, Jane!' }
 ```
+
+# Go server hot reloading 
+```
+go install github.com/cosmtrek/air@latest
+air init
+air
+```
