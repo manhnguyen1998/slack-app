@@ -9,7 +9,7 @@ message PostMessageRequest {
 }
 
 message PostMessageResponse {
-  string response = 1;
+  string message = 1;
 }
 
 service SlackService {
