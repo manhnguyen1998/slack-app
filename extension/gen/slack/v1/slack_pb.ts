@@ -48,9 +48,9 @@ export class PostMessageRequest extends Message<PostMessageRequest> {
  */
 export class PostMessageResponse extends Message<PostMessageResponse> {
   /**
-   * @generated from field: string response = 1;
+   * @generated from field: string message = 1;
    */
-  response = "";
+  message = "";
 
   constructor(data?: PartialMessage<PostMessageResponse>) {
     super();
@@ -60,7 +60,7 @@ export class PostMessageResponse extends Message<PostMessageResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "slack.v1.PostMessageResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "response", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PostMessageResponse {

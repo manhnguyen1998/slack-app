@@ -12,7 +12,7 @@ const searchForCountry = async countryName => {
     const response = await axios.get(`${api}`);
     console.log(response)
   } catch (error) {
-    errors.textContent = "we have no dataaaaaa"
+    error.textContent = "we have no dataaaaaa"
   }
 }
 
