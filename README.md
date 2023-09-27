@@ -35,10 +35,12 @@ message (TYPE_STRING) => manh
 }
 ```
 
-2. Connect to golang server with ts
+2. Using client
 ```
 cd extension
-npx tsx client.ts
+yarn
+yarn run dev
+open http://127.0.0.1:5173/ to check
 
 -> PostMessageResponse { response: 'Sending message successfully, Jane!' }
 ```
