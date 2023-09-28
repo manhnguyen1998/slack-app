@@ -6,7 +6,7 @@ const __dirname = path.resolve();
 
 export default {
   mode: 'development',
-  entry: './src/index.tsx',
+  entry: './src/main.tsx',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -28,6 +28,7 @@ export default {
         exclude: /node_modules/,
       },
       {
+        exclude: /node_modules/,
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       }
