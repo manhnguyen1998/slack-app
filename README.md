@@ -45,6 +45,12 @@ open http://127.0.0.1:5173/ to check
 -> PostMessageResponse { response: 'Sending message successfully, Jane!' }
 ```
 
+3. Using extension
+```
+cd extension
+yarn build
+```
+- Load /dist to your chrome
 # Go server hot reloading 
 ```
 go install github.com/cosmtrek/air@latest
