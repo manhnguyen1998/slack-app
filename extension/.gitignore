@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 *App.js
 *main.js
-*
+gen/**/*.js
