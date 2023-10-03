@@ -31,10 +31,11 @@ function App() {
   <ol>
       {messages.map((msg, index) => (
         <li key={index}>
-          {`${msg.fromMe ? "ME:" : "ELIZA:"} ${msg.message}`}
+          {`${msg.fromMe ? "ME:" : "SLACK SERVER:"} ${msg.message}`}
         </li>
       ))}
     </ol>
+    <p>Send your message to slack channel</p>
   <form onSubmit={async (e) => {
       e.preventDefault();
       // Clear inputValue since the user has submitted.
