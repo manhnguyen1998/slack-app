@@ -1,4 +1,4 @@
 export TOKEN=your-slack bot token
 # follow this tutorial to get your token
 https://api.slack.com/tutorials/tracks/getting-a-token?app_id_from_manifest=A05TJ8BT2E9
-export USER_ID=your user id
+export CHANNEL_ID= your channel id

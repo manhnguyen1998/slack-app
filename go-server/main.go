@@ -29,7 +29,7 @@ func (s *SlackServer) PostMessage(
 	// Call Slack api
 	api := slack.New(os.Getenv("TOKEN"))
 
-	res1, res2, err := api.PostMessage("CLMTRTE2C", slack.MsgOptionText(req.Msg.Message, false))
+	res1, res2, err := api.PostMessage(os.Getenv("CHANNEL_ID"), slack.MsgOptionText(req.Msg.Message, false))
 	if err != nil {
 		fmt.Printf("%s\n", err)
 		res := connect.NewResponse(&slackv1.PostMessageResponse{
