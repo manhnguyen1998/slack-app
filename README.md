@@ -1,3 +1,6 @@
+# Demo
+Send your message to Slack channel from chrome extension
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnAxY3IzcGRpM25qdWZ3NWwwbWFyYzMybHdrcDN6dTZ1M2dycHI2cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LfuheqsT32MgK3vZWD/giphy.gif)
 # slack-app
 1. create your own envrc
     ```
